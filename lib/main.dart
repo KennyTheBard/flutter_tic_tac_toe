@@ -29,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // I'm lazy, don't judge me
   static final List<List<int>> combs = <List<int>>[
     <int>[0, 1, 2],
     <int>[3, 4, 5],
@@ -64,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _checkGameState() {
+    // check if a player has won
     for (final List<int> comb in combs) {
       int sum = 0;
 
@@ -76,6 +78,16 @@ class _MyHomePageState extends State<MyHomePage> {
         return;
       }
     }
+
+    // check if draw
+    for (final List<int> comb in combs) {
+      for (final int c in comb) {
+        if (cells[c] == 0) {
+          return;
+        }
+      }
+    }
+    _gamesEnd(0);
   }
 
   void _gamesEnd(int winnersValue) {
@@ -83,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
     showDialog<AlertDialog>(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(content: Text(winnersValue > 0 ? 'Green wins' : 'Red wins'));
+          return AlertDialog(content: Text(winnersValue == 0 ? 'Draw' : winnersValue > 0 ? 'Green wins' : 'Red wins'));
         });
   }
 
