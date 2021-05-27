@@ -128,11 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: GridView.builder(
                         itemCount: 9,
                         padding: const EdgeInsets.all(5.0),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                mainAxisSpacing: 5.0,
-                                crossAxisSpacing: 5.0),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3, mainAxisSpacing: 5.0, crossAxisSpacing: 5.0),
                         itemBuilder: (BuildContext context, int index) {
                           return Item(
                               index: index,
@@ -148,10 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextButton.styleFrom(
                     primary: Colors.white,
                     backgroundColor: Colors.blue,
-                    textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontStyle: FontStyle.italic),
+                    textStyle: const TextStyle(color: Colors.white, fontSize: 40, fontStyle: FontStyle.italic),
                   ),
                   onPressed: _restartGame,
                   child: const Text('Restart'))
@@ -164,9 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
 typedef OnTap = void Function(int);
 
 class Item extends StatelessWidget {
-  const Item(
-      {Key? key, required this.index, required this.color, required this.onTap})
-      : super(key: key);
+  const Item({Key? key, required this.index, required this.color, required this.onTap}) : super(key: key);
   final int index;
   final OnTap onTap;
   final Color color;
